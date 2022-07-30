@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["DeathsGun"]
 license = "Apache-2.0"
-description = "A Rust `Q.HOME+ESS - QCELLS` API client."
+description = "A Rust Q.HOME+ESS - QCELLS API client."
 repository = "https://github.com/deathsgun/qcells"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
