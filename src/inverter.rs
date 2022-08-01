@@ -5,8 +5,9 @@ use crate::models::InverterStateResponse;
 pub struct Inverter {
     pub battery: Option<Battery>,
     pub array_power: f64,
-    pub grid_power_import: f32,
-    pub grid_power_export: f32,
+    pub grid_power_import: f64,
+    pub grid_power_export: f64,
+    pub power: f64,
 }
 
 impl Inverter {
@@ -27,8 +28,27 @@ impl Inverter {
                 voltage: state.battery_voltage.unwrap(),
             })
         }
+
+        let array_power: f64 = state.first_array_power.unwrap_or(0.0) +
+            state.second_array_power.unwrap_or(0.0) +
+            state.third_array_power.unwrap_or(0.0) +
+            state.fourth_array_power.unwrap_or(0.0) +
+            state.fifth_array_power.unwrap_or(0.0) +
+            state.sixth_array_power.unwrap_or(0.0) +
+            state.seventh_array_power.unwrap_or(0.0) +
+            state.eighth_array_power.unwrap_or(0.0) +
+            state.ninth_array_power.unwrap_or(0.0) +
+            state.tenth_array_power.unwrap_or(0.0) +
+            state.eleventh_array_power.unwrap_or(0.0) +
+            state.twelfth_array_power.unwrap_or(0.0);
+
+        let power: f64 = state.first_inverter_power.unwrap_or(0.0) +
+            state.second_inverter_power.unwrap_or(0.0) +
+            state.third_inverter_power.unwrap_or(0.0);
+
         return Inverter {
-            array_power: (state.first_array_power + state.second_array_power) as f64,
+            array_power,
+            power,
             grid_power_export: export,
             grid_power_import: import,
             battery,
@@ -62,9 +82,9 @@ mod tests {
                 Ok(inv) => inv,
                 Err(err) => panic!("{}", err.message)
             };
+            println!("{:#?}", inverter);
             if inverter.battery.is_some() {
                 let battery = inverter.battery.unwrap();
-                assert_ne!(battery.voltage, 0.0);
                 assert_ne!(battery.capacity, 0.0);
                 assert_ne!(battery.temperature_high, 0.0);
                 assert_ne!(battery.temperature_low, 0.0);

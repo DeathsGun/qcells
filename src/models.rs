@@ -55,7 +55,7 @@ pub(crate) struct SiteResponse {
 #[derive(Deserialize)]
 pub(crate) struct InverterStateResponse {
     #[serde(rename(deserialize = "batVoltage1"))]
-    pub battery_voltage: Option<f32>,
+    pub battery_voltage: Option<f64>,
     #[serde(rename(deserialize = "batteryCapacity"))]
     pub battery_capacity: Option<f32>,
     #[serde(rename(deserialize = "batteryCellTemperatureHigh"))]
@@ -65,11 +65,37 @@ pub(crate) struct InverterStateResponse {
     // #[serde(rename(deserialize = "batteryHealth"))]
     // pub battery_health: String,
     #[serde(rename(deserialize = "feedinpower"))]
-    pub grid_power: f32,
+    pub grid_power: f64,
     #[serde(rename(deserialize = "powerdc1"))]
-    pub first_array_power: f32,
+    pub first_array_power: Option<f64>,
     #[serde(rename(deserialize = "powerdc2"))]
-    pub second_array_power: f32,
+    pub second_array_power: Option<f64>,
+    #[serde(rename(deserialize = "powerdc3"))]
+    pub third_array_power: Option<f64>,
+    #[serde(rename(deserialize = "powerdc4"))]
+    pub fourth_array_power: Option<f64>,
+    #[serde(rename(deserialize = "powerdc5"))]
+    pub fifth_array_power: Option<f64>,
+    #[serde(rename(deserialize = "powerdc6"))]
+    pub sixth_array_power: Option<f64>,
+    #[serde(rename(deserialize = "powerdc7"))]
+    pub seventh_array_power: Option<f64>,
+    #[serde(rename(deserialize = "powerdc8"))]
+    pub eighth_array_power: Option<f64>,
+    #[serde(rename(deserialize = "powerdc9"))]
+    pub ninth_array_power: Option<f64>,
+    #[serde(rename(deserialize = "powerdc10"))]
+    pub tenth_array_power: Option<f64>,
+    #[serde(rename(deserialize = "powerdc11"))]
+    pub eleventh_array_power: Option<f64>,
+    #[serde(rename(deserialize = "powerdc12"))]
+    pub twelfth_array_power: Option<f64>,
+    #[serde(rename(deserialize = "pac1"))]
+    pub first_inverter_power: Option<f64>,
+    #[serde(rename(deserialize = "pac2"))]
+    pub second_inverter_power: Option<f64>,
+    #[serde(rename(deserialize = "pac3"))]
+    pub third_inverter_power: Option<f64>,
     //#[serde(rename(deserialize = "yieldtotal"))]
     //pub yield_total: u32
 }
