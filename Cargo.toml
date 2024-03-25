@@ -11,6 +11,6 @@ repository = "https://github.com/deathsgun/qcells"
 
 [dependencies]
 chrono = "0.4.19"
-reqwest = { version = "0.11", features = ["blocking", "json"] }
+reqwest = { version = "0.12", features = ["blocking", "json"] }
 serde = { version = "1.0", features = ["derive"] }
 md5 = "0.7.0"
